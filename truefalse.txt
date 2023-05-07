@@ -1,0 +1,11 @@
+True or false? All sides of a scalene triangle have the same length.#False
+True or false? 9 x 8 = 72.#True
+True or false? Pi can be written as a fraction.#False
+True or false? A googol is bigger than a billion.#True
+True or false? 29 + 38 = 57.#False
+True or false? -4 is a natural number.#False
+True or false? A convex shape curves outwards.#True
+True or false? 53 - 18 = 25.#False
+True or false? -2 is an integer.#True
+True or false? 121 ÷ 11 = 11.#True
+Is 4 + 1 = 5 + 2 true or false.#true
