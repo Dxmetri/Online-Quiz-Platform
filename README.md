@@ -1,6 +1,6 @@
 # Online-Quiz-Platform
 
-Who are the users of the software? 
+#Who are the users of the software? 
 The users of the software would be anyone who wants to take quizzes, such as students, professionals, and anyone interested in learning and testing their knowledge.
  What is the purpose of the software? 
 The purpose of the software is to provide a platform for users to take various quizzes and test their knowledge on different subjects. The software could be used for educational purposes, job interviews, personal development or pure entertainment.
