@@ -38,7 +38,7 @@ public class QuizScreen {
     private Text question;
     private RadioButton option1, option2, option3, option4;
     private volatile boolean running = false;
-    private volatile long elapsedTime = 120000L;
+    private volatile long elapsedTime = 300000L;
 
     private QuizHashMap<Quiz, String> quizHashMap = new QuizHashMap<>(10);
 
@@ -50,10 +50,15 @@ public class QuizScreen {
         this.questionType = questionType;
         this.currentUser = user;
         //read Questions from database
-        if (questionType.equalsIgnoreCase("True False"))
+
+        // Added a new quiz "Sport MQC"
+        if (questionType.equalsIgnoreCase("Math True False")) {
             quizArrayList = Database.readTrueFalseQuiz();
-        else
+        } else if (questionType.equalsIgnoreCase("Math MCQs")) {
             quizArrayList = Database.readMCQs();
+        } else if (questionType.equalsIgnoreCase("Sports MCQs")) {
+            quizArrayList = Database.readSportsMCQs();
+        }
 
 
         //create GUI components
@@ -206,7 +211,8 @@ public class QuizScreen {
                     }
 
                 }
-                if (questionCount == 10) {
+                //Fixed error where if you got a perfect score it would display "You got 11 out of 10" Instead of "10 out of 10"
+                if (questionCount == 9) {
                     finishQuiz();
                     stage.close();
 
@@ -217,14 +223,11 @@ public class QuizScreen {
             }
         });
 
-
         //start timer Thread (MultiThreading)
         startTimerThread(txtTimer);
 
 
     }
-
-
     private void updateNextQuestion() {
         if (quizArrayList.get(questionCount) instanceof TrueFalseQuiz) {
             TrueFalseQuiz quiz = (TrueFalseQuiz) quizArrayList.get(questionCount);
@@ -245,7 +248,7 @@ public class QuizScreen {
 
     }
 
-
+//Made the improvement to change the timer from a 2-minute countdown to a 5-minute countdown based on feed back that 2 minutes was not enough time to complete the quiz.
     public void startTimerThread(Text timeLabel) {
         if (!running) {
             running = true;
@@ -280,7 +283,7 @@ public class QuizScreen {
     }
 
     private void finishTimer() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         Platform.runLater(() -> {
             Dialog<String> dialog = new Dialog<>();
             dialog.setTitle("Time's up");
@@ -304,3 +307,4 @@ public class QuizScreen {
     }
 
 }
+
