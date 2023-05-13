@@ -29,13 +29,13 @@ public class StartQuizScreen  {
         this.currentUser=currentUser;
         // Create the data for the ComboBox
         ObservableList<String> options = FXCollections.observableArrayList(
-                "True False",
-                "MCQs"
+                "Math True False",
+                "Math MCQs", "Sports MCQs"
         );
 
 
         ComboBox<String> category=new ComboBox<>(options);
-        category.setValue("True False");
+        category.setValue("Math True False");
 
         Text txtCat=new Text("Category");
 
