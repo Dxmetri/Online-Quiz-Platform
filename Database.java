@@ -57,7 +57,7 @@ public class Database {
     {
         try {
 
-            FileReader fr=new FileReader("truefalse.txt");
+            FileReader fr=new FileReader("math_truefalse.txt");
             BufferedReader br=new BufferedReader(fr);
             String line=null;
             while ((line=br.readLine())!=null)
@@ -83,7 +83,7 @@ public class Database {
     {
         try {
 
-            FileReader fr=new FileReader("mcqs.txt");
+            FileReader fr=new FileReader("math_mcqs.txt");
             BufferedReader br=new BufferedReader(fr);
             String line=null;
             while ((line=br.readLine())!=null)
@@ -95,7 +95,7 @@ public class Database {
                 String op3=token[3];
                 String op4=token[4];
                 int correct=Integer.parseInt(token[5]);
-                Quiz quiz=new MultipleChoiceQuiz(question,"MCQS",op1,op2,op3,op4,correct);
+                Quiz quiz=new MultipleChoiceQuiz(question,"Math MCQs",op1,op2,op3,op4,correct);
                 quizArrayList.add(quiz);
             }
             br.close();
@@ -108,12 +108,35 @@ public class Database {
         Collections.shuffle(quizArrayList);
         return quizArrayList;
     }
+    public static ArrayList<Quiz> readSportsMCQs() {
+        try {
+            FileReader fr = new FileReader("sports_mcqs.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] token = line.split("#");
+                String question = token[0];
+                String op1 = token[1];
+                String op2 = token[2];
+                String op3 = token[3];
+                String op4 = token[4];
+                int correct = Integer.parseInt(token[5]);
+                Quiz quiz = new MultipleChoiceQuiz(question, "Sports MCQs", op1, op2, op3, op4, correct);
+                quizArrayList.add(quiz);
+            }
+            br.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        Collections.shuffle(quizArrayList);
+        return quizArrayList;
+    }
 
     public static void addScores(int score)
     {
         scoresQueue.add(score);
     }
-
 
 
     //This Function will sort questions alphabetically
